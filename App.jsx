@@ -1,23 +1,18 @@
-import React from "react"
-import { useState } from "react";
+import { useEffect, useState } from 'react'
+
+import './App.css'
 
 function App() {
-  const [car,setCar]=useState({
-    brand:"Ferrari",
-    model:"Roma",
-    year:"2023",
-    color:"red"
-  });
-  const changeColor=()=>{
-  setCar((prev)=>{
-  return {...prev,color:"blue"}
-  })
-  }
+const [count,setCount]=useState(0)
+const [name,setName]=useState("John")
+useEffect(()=>{
+  setTimeout(()=>{
+    setCount(count=>count+1);
+  },2000)
+},[count,name])
   return (
     <>
-      <h1>My {car.brand}</h1>
-      <h2>It is a {car.color} {car.model} from {car.year}</h2>
-      <button onClick={changeColor}>Blue</button>
+      <h1>I've rendered {count} times!</h1>
     </>
   )
 }
